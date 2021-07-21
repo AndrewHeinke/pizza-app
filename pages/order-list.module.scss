@@ -1,0 +1,55 @@
+.order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  &-item {
+    background: #eee;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.order-detail-title {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.order-detail-row {
+  padding-bottom: 0.5rem;
+}
+
+.empty-search {
+  background: #eeeeee;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #333;
+  p {
+    margin: 0;
+  }
+}
+.pizza {
+  &-card-content {
+    position: relative;
+  }
+  &-img {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+  }
+}
