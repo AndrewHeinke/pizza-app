@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
 import Banner from "../components/Banner";
 import withSession from "../lib/session";
 

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div
+  className="homepage-banner-wrapper"
+>
+  <div
+    className="MuiPaper-root MuiCard-root homepage-banner makeStyles-root-1 MuiPaper-outlined MuiPaper-rounded"
+  >
+    <img
+      alt=""
+      aria-hidden={true}
+      className="homepage-banner-image one"
+      src="images/3d-pizza.png"
+    />
+    <img
+      alt=""
+      aria-hidden={true}
+      className="homepage-banner-image two"
+      src="images/3d-pizza-flip.png"
+    />
+    <h1
+      className="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
+    >
+      The Pizza Shop
+    </h1>
+    <a
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+      href="/order"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Order Pizza
+      </span>
+    </a>
+  </div>
+</div>
+`;
