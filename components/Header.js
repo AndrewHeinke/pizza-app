@@ -1,40 +1,13 @@
 import { AppBar, Button, Container } from "@material-ui/core";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Link from "next/link";
 import ActiveLink from "./ActiveLink";
 import useUser from "../lib/useUser";
-import fetchJSON from "../lib/fetchJSON";
-import { useRouter } from "next/router";
+import LoginButton from "./LoginButton";
 import styles from "./Header.module.scss";
 
 function Header() {
-  const { user, mutateUser } = useUser();
-  const router = useRouter();
-  let LoginButton;
-  if (user?.isLoggedIn) {
-    LoginButton = (
-      <Button
-        href="/api/logout"
-        onClick={async (e) => {
-          e.preventDefault();
-          mutateUser(await fetchJSON("/api/logout", { method: "POST" }), false);
-          router.push("/login");
-        }}
-        size="small"
-        startIcon={<ExitToAppIcon />}
-      >
-        Sign out
-      </Button>
-    );
-  } else {
-    LoginButton = (
-      <Link href="/login" passHref>
-        <Button size="small" variant="contained" color="primary">
-          Log in
-        </Button>
-      </Link>
-    );
-  }
+  const { user } = useUser();
+
   return (
     <AppBar position="static" color="transparent" as="header">
       <Container maxWidth="lg">
@@ -71,7 +44,9 @@ function Header() {
                 </Button>
               </ActiveLink>
             </li>
-            <li className={styles["header-nav-item"]}>{LoginButton}</li>
+            <li className={styles["header-nav-item"]}>
+              <LoginButton isLoggedIn={user?.isLoggedIn} />
+            </li>
           </ul>
         </nav>
       </Container>
