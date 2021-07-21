@@ -47,7 +47,6 @@ const validationSchema = Yup.object({
 
 function Order({ user }) {
   const router = useRouter();
-  const { mutateUser } = useUser();
   const [open, setOpen] = useState(false);
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {

@@ -15,6 +15,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import withSession from "../lib/session";
+import { useRouter } from "next/router";
 import SearchIcon from "@material-ui/icons/Search";
 import { Alert, Skeleton } from "@material-ui/lab";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -29,6 +30,7 @@ const useStyles = makeStyles({
 });
 
 function OrderList({ user }) {
+  const router = useRouter();
   const classes = useStyles();
   const [orders, setOrders] = useState(null);
   const [searchText, setSearchText] = useState("");
@@ -57,7 +59,14 @@ function OrderList({ user }) {
         setSearchText("");
         setOpen(true);
       })
-      .catch(function (error) {
+      .catch((error) => {
+        if (error.response.status === 504) {
+          alert(
+            "This order is not in the system. Refresh page to fetch latest orders."
+          );
+          router.reload(window.location.pathname);
+        }
+
         console.log(error);
       });
   };
