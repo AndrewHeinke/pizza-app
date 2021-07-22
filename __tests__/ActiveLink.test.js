@@ -8,7 +8,7 @@ nextRouter.useRouter = jest.fn();
 nextRouter.useRouter.mockImplementation(() => ({ route: "/" }));
 
 describe("ActiveLink Component", () => {
-  it("should render", () => {
+  test("should render", () => {
     render(
       <ActiveLink
         activeClassName="MuiButton-textPrimary"
@@ -20,7 +20,7 @@ describe("ActiveLink Component", () => {
     );
   });
 
-  it("should pass href value to child component", () => {
+  test("should pass href value to child component", () => {
     const { getByText } = render(
       <ActiveLink
         activeClassName="MuiButton-textPrimary"

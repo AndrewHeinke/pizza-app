@@ -7,7 +7,7 @@ nextRouter.useRouter = jest.fn();
 nextRouter.useRouter.mockImplementation(() => ({ route: "/" }));
 
 describe("Header Component", () => {
-  it("should render component", () => {
+  test("should render component", () => {
     render(<Header />);
   });
 });

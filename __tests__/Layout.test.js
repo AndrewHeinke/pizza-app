@@ -7,7 +7,7 @@ nextRouter.useRouter = jest.fn();
 nextRouter.useRouter.mockImplementation(() => ({ route: "/" }));
 
 describe("Layout Component", () => {
-  it("should render", () => {
+  test("should render", () => {
     render(<Layout />);
   });
 });
