@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import LoginButton from "../LoginButton";
+import LoginButton from "../components/LoginButton";
 import * as nextRouter from "next/router";
 
 nextRouter.useRouter = jest.fn();

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import ActiveLink from "../ActiveLink";
+import ActiveLink from "../components/ActiveLink";
 import * as nextRouter from "next/router";
 import { Button } from "@material-ui/core";
 

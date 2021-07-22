@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Banner from "../Banner";
+import Banner from "../components/Banner";
 
 describe("Banner Component", () => {
   test("should render Banner component", () => {

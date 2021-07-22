@@ -1,4 +1,4 @@
-import Home from "../index";
+import Home from "../pages/index";
 import { render } from "@testing-library/react";
 
 describe("The Home Page Component", () => {
