@@ -37,9 +37,9 @@ const handler = async (req, res) => {
       .catch((error) => {
         const errorStatus = error.response.status;
         if (errorStatus === 401) {
-          res.status(401).send(error.response.data.msg);
+          res.status(401).end(`Session expired, log in again.`);
         } else if (errorStatus === 409) {
-          res.status(409).send(error.response.data.msg);
+          res.status(409).end(`Conflict: item already exists in object.`);
         } else {
           console.log(error);
         }

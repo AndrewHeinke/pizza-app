@@ -5,7 +5,6 @@ import withSession from "../lib/session";
 import * as Yup from "yup";
 import axios from "axios";
 import fetchJSON from "../lib/fetchJSON";
-import useUser from "../lib/useUser";
 import { useRouter } from "next/router";
 import {
   Box,
@@ -48,6 +47,7 @@ const validationSchema = Yup.object({
 function Order({ user }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -74,52 +74,51 @@ function Order({ user }) {
             ],
           }}
           validationSchema={validationSchema}
-          onSubmit={(values, { resetForm, setSubmitting }) => {
-            let counter = 0;
-            const arrLength = values.pizzas.length;
-            const pizzaData = values.pizzas;
+          onSubmit={async (values, { resetForm }) => {
+            try {
+              let counter = 0;
+              const arrLength = values.pizzas.length;
+              const pizzaData = values.pizzas;
 
-            for (let i = 0; i < arrLength; i++) {
-              const { crust, flavor, size, table } = pizzaData[i];
+              for (let i = 0; i < arrLength; i++) {
+                const { crust, flavor, size, table } = pizzaData[i];
 
-              axios({
-                method: "POST",
-                url: "/api/orders",
-                data: {
-                  Crust: crust,
-                  Flavor: flavor,
-                  Size: size,
-                  Table_No: table,
-                  authToken: user.authToken,
-                },
-              })
-                .then(() => {
-                  counter++;
-                  if (counter === arrLength) {
-                    setOpen(true);
-                    resetForm({});
-                  }
-                })
-                .catch((error) => {
-                  if (error.response.status === 401) {
-                    alert("Session has expired, you must log in again.");
-                    fetchJSON("/api/logout", { method: "POST" }).then(() => {
-                      router.push("/login");
-                      router.reload(window.location.pathname);
-                      return;
-                    });
-                  } else if (error.response.status === 409) {
-                    alert(
-                      "One or more of your orders already exists in your order list. Please delete those orders or order a unique pizza."
-                    );
-                    resetForm({});
-                    return;
-                  } else {
-                    alert(`An error has occured. ${error}`);
-                    resetForm({});
-                    return;
-                  }
+                await axios({
+                  method: "POST",
+                  url: "/api/orders",
+                  data: {
+                    Crust: crust,
+                    Flavor: flavor,
+                    Size: size,
+                    Table_No: table,
+                    authToken: user.authToken,
+                  },
                 });
+                counter++;
+                if (counter === arrLength) {
+                  setOpen(true);
+                  resetForm({});
+                }
+              }
+            } catch (error) {
+              if (error.response.status === 401) {
+                alert("Session has expired, you must log in again.");
+                fetchJSON("/api/logout", { method: "POST" }).then(() => {
+                  router.push("/login");
+                  router.reload(window.location.pathname);
+                  return;
+                });
+              } else if (error.response.status === 409) {
+                alert(
+                  "One or more of your orders already exists in your order list. Please delete those orders or order a unique pizza."
+                );
+                resetForm({});
+                return;
+              } else {
+                alert(`An error has occured. ${error}`);
+                resetForm({});
+                return;
+              }
             }
           }}
           render={({ values }) => (
