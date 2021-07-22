@@ -363,10 +363,16 @@ template {
   font-size: 1rem;
   display: flex;
   width: 100%;
+  outline: none;
+}
+
+.table-number:focus {
+  border: 1px solid #2196f3;
+  box-shadow: inset 0 0 0 1px #2196f3;
 }
 
 .order-select {
-  background: none;
+  background-color: #303030;
   border: 1px solid rgba(255, 255, 255, 0.23);
   border-radius: 4px;
   color: white;
@@ -379,4 +385,16 @@ template {
   display: flex;
   width: 100%;
   cursor: pointer;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23ffffff'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+  background-size: 20px;
+  background-position: 98% center;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  outline: none;
+}
+
+.order-select:focus {
+  border: 1px solid #2196f3;
+  box-shadow: inset 0 0 0 1px #2196f3;
 }
